@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0C1032;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* Background Gradients */
+        .background-gradient {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(75px);
+            z-index: -1;
+        }
+
+        .gradient-1 {
+            width: 621.63px;
+            height: 595.56px;
+            left: 665px;
+            top: -29px;
+            background: linear-gradient(216deg, #A201FF 0%, #CAF94E 100%);
+        }
+
+        .gradient-2 {
+            width: 474.28px;
+            height: 468.10px;
+            left: 1378.72px;
+            top: 121.02px;
+            background: linear-gradient(158deg, #C31AD9 0%, #0900FF 100%);
+        }
+
+        .gradient-3 {
+            width: 661.92px;
+            height: 624.89px;
+            left: 1028.77px;
+            top: 592.11px;
+            background: linear-gradient(314deg, #FF5100 0%, #FFF95A 100%);
+        }
+
+        /* Astronaut Section (Left Side) */
+        .astronaut-section {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .astronaut-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .wifi-icon {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            color: #00FFA3;
+            font-size: 40px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Main Form Container (Right Side) */
+        .form-container {
+            width: 450px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Social Buttons */
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .social-btn img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .social-btn-text {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Input Fields */
+        .input-field {
+            width: 100%;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0 15px;
+            color: white;
+            font-family: Poppins;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #A201FF;
+            box-shadow: 0 0 10px rgba(162, 1, 255, 0.5);
+        }
+
+        /* Password Field with Toggle */
+        .password-field {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #0C1032;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Terms Checkbox */
+        .terms-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox-checked::after {
+            content: "✓";
+            color: #0C1032;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .terms-text {
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Sign Up Button */
+        .signup-btn {
+            width: 100%;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .signup-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Gradients -->
+    <div class="background-gradient gradient-1"></div>
+    <div class="background-gradient gradient-2"></div>
+    <div class="background-gradient gradient-3"></div>
+
+    <!-- Astronaut Section (Left) -->
+    <div class="astronaut-section">
+        <div class="wifi-icon"></div>
+    </div>
+
+    <!-- Main Form (Right) -->
+    <div class="form-container">
+        <div class="tab-nav">
+            <div class="tab" onclick="switchTab('signin')">Sign in</div>
+            <div class="tab active" onclick="switchTab('signup')">Create an account</div>
+        </div>
+
+        <div class="social-buttons">
+            <div class="social-btn">
+                <img src="C:\Users\solut\FinalProject\Images\google-logo-png-icon-free-download-SUF63j (1).png" alt="Google" />
+                <span class="social-btn-text">Sign up with Google</span>
+            </div>
+            <div class="social-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" />
+                <span class="social-btn-text">Sign up with Facebook</span>
+            </div>
+        </div>
+
+        <input type="text" class="input-field" placeholder="Name" />
+
+        <input type="email" class="input-field" placeholder="Email or Phone" />
+
+        <div class="password-field">
+            <input type="password" class="input-field" placeholder="Password" />
+            <div class="toggle-password">👁️</div>
+        </div>
+
+        <div class="password-field">
+            <input type="password" class="input-field" placeholder="Confirm Password" />
+            <div class="toggle-password">👁️</div>
+        </div>
+
+        <div class="terms-section">
+            <div class="checkbox" id="termsCheckbox"></div>
+            <div class="terms-text">I agree to all terms and Privacy Policy</div>
+        </div>
+
+        <div class="signup-btn">Sign up</div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.textContent = '🙈';
+                } else {
+                    input.type = 'password';
+                    this.textContent = '👁️';
+                }
+            });
+        });
+
+        // Toggle checkbox
+        document.getElementById('termsCheckbox').addEventListener('click', function() {
+            this.classList.toggle('checkbox-checked');
+        });
+
+        // Tab switching (optional)
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            if (tab === 'signin') {
+                tabs[0].classList.add('active');
+                // You can redirect or show sign-in form here
+                alert("Switching to Sign In...");
+            } else {
+                tabs[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
