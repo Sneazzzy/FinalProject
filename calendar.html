@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Calendar - OnTime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1E1E30;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #1A1A2E;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background: #007BFF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #0069D9;
+        }
+
+        .nav-btn i {
+            font-size: 20px;
+        }
+
+        .nav-btn span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #1A1A2E;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #2C2C4A;
+            border-radius: 8px;
+            padding: 8px 15px;
+            flex: 1;
+        }
+
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        .search-btn {
+            background: #2C2C4A;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .greeting {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: #00FF88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Calendar Section */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn-small {
+            padding: 6px 12px;
+            background: #2C2C4A;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .nav-btn-small:hover {
+            background: #3A3A5A;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .day-label {
+            text-align: center;
+            font-size: 14px;
+            color: #AAAAAA;
+            margin-bottom: 10px;
+        }
+
+        .date-cell {
+            width: 60px;
+            height: 60px;
+            background: #2C2C4A;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            position: relative;
+        }
+
+        .date-cell:hover {
+            background: #3A3A5A;
+        }
+
+        .date-cell.today {
+            background: linear-gradient(90deg, #007BFF, #00FF88);
+            color: white;
+        }
+
+        .date-cell.has-event::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .date-cell.overdue::after {
+            background: #FF4D4D;
+        }
+
+        .date-cell.upcoming::after {
+            background: #007BFF;
+        }
+
+        .date-cell.paid::after {
+            background: #00FF88;
+        }
+
+        /* Popup */
+        .popup {
+            position: absolute;
+            background: white;
+            color: black;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+        }
+
+        .popup.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .popup-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .popup-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .popup-amount {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .add-btn {
+            background: #00FF88;
+            color: black;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="nav-btn">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-btn">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add Bill</span>
+        </div>
+        <div class="nav-btn">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Bills</span>
+        </div>
+        <div class="nav-btn active">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Calendar</span>
+        </div>
+        <div class="nav-btn">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+        </div>
+        <div class="nav-btn">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search bills or tags">
+                <button class="search-btn">Search</button>
+            </div>
+            <div class="greeting">
+                <span>Hello, Nin</span>
+                <div class="user-avatar">N</div>
+            </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar-header">
+            <div class="calendar-title">November 2025</div>
+            <div class="calendar-nav">
+                <div class="nav-btn-small" onclick="prevMonth()">prev</div>
+                <div class="nav-btn-small" onclick="nextMonth()">next</div>
+            </div>
+        </div>
+
+        <div class="calendar-grid">
+            <!-- Day Labels -->
+            <div class="day-label">Sun</div>
+            <div class="day-label">Mon</div>
+            <div class="day-label">Tue</div>
+            <div class="day-label">Wed</div>
+            <div class="day-label">Thu</div>
+            <div class="day-label">Fri</div>
+            <div class="day-label">Sat</div>
+
+            <!-- Dates -->
+            <div class="date-cell has-event paid" data-date="2025-11-01" onclick="showPopup(this, 'Rent', '₱1,000')">
+                1
+            </div>
+            <div class="date-cell" data-date="2025-11-02" onclick="showAddPopup(this)">2</div>
+            <div class="date-cell" data-date="2025-11-03" onclick="showAddPopup(this)">3</div>
+            <div class="date-cell" data-date="2025-11-04" onclick="showAddPopup(this)">4</div>
+            <div class="date-cell" data-date="2025-11-05" onclick="showAddPopup(this)">5</div>
+            <div class="date-cell" data-date="2025-11-06" onclick="showAddPopup(this)">6</div>
+            <div class="date-cell has-event overdue" data-date="2025-11-07" onclick="showPopup(this, 'Water', '₱390.00')">7</div>
+            <div class="date-cell" data-date="2025-11-08" onclick="showAddPopup(this)">8</div>
+            <div class="date-cell" data-date="2025-11-09" onclick="showAddPopup(this)">9</div>
+            <div class="date-cell" data-date="2025-11-10" onclick="showAddPopup(this)">10</div>
+            <div class="date-cell" data-date="2025-11-11" onclick="showAddPopup(this)">11</div>
+            <div class="date-cell" data-date="2025-11-12" onclick="showAddPopup(this)">12</div>
+            <div class="date-cell" data-date="2025-11-13" onclick="showAddPopup(this)">13</div>
+            <div class="date-cell" data-date="2025-11-14" onclick="showAddPopup(this)">14</div>
+            <div class="date-cell" data-date="2025-11-15" onclick="showAddPopup(this)">15</div>
+            <div class="date-cell" data-date="2025-11-16" onclick="showAddPopup(this)">16</div>
+            <div class="date-cell" data-date="2025-11-17" onclick="showAddPopup(this)">17</div>
+            <div class="date-cell" data-date="2025-11-18" onclick="showAddPopup(this)">18</div>
+            <div class="date-cell" data-date="2025-11-19" onclick="showAddPopup(this)">19</div>
+            <div class="date-cell has-event upcoming" data-date="2025-11-20" onclick="showPopup(this, 'Electricity', '₱1500.00')">20</div>
+            <div class="date-cell" data-date="2025-11-21" onclick="showAddPopup(this)">21</div>
+            <div class="date-cell" data-date="2025-11-22" onclick="showAddPopup(this)">22</div>
+            <div class="date-cell" data-date="2025-11-23" onclick="showAddPopup(this)">23</div>
+            <div class="date-cell has-event upcoming" data-date="2025-11-24" onclick="showPopup(this, 'Internet', '₱999.00')">24</div>
+            <div class="date-cell" data-date="2025-11-25" onclick="showAddPopup(this)">25</div>
+            <div class="date-cell" data-date="2025-11-26" onclick="showAddPopup(this)">26</div>
+            <div class="date-cell" data-date="2025-11-27" onclick="showAddPopup(this)">27</div>
+            <div class="date-cell" data-date="2025-11-28" onclick="showAddPopup(this)">28</div>
+            <div class="date-cell" data-date="2025-11-29" onclick="showAddPopup(this)">29</div>
+            <div class="date-cell" data-date="2025-11-30" onclick="showAddPopup(this)">30</div>
+        </div>
+    </div>
+
+    <!-- Popups -->
+    <div id="billPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-title">Rent</div>
+            <div class="popup-amount">₱1,000</div>
+        </div>
+    </div>
+
+    <div id="addPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-title">Add New Bill</div>
+            <div class="add-btn" onclick="window.location.href='add_bill.html'">+ Add</div>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(element, title, amount) {
+            const popup = document.getElementById('billPopup');
+            popup.querySelector('.popup-title').textContent = title;
+            popup.querySelector('.popup-amount').textContent = amount;
+            popup.style.left = element.offsetLeft + 'px';
+            popup.style.top = (element.offsetTop - 40) + 'px';
+            popup.classList.add('visible');
+
+            // Close popup when clicking outside
+            document.addEventListener('click', function close(e) {
+                if (!e.target.closest('.date-cell') && !e.target.closest('.popup')) {
+                    popup.classList.remove('visible');
+                    document.removeEventListener('click', close);
+                }
+            });
+        }
+
+        function showAddPopup(element) {
+            const popup = document.getElementById('addPopup');
+            popup.style.left = element.offsetLeft + 'px';
+            popup.style.top = (element.offsetTop - 40) + 'px';
+            popup.classList.add('visible');
+
+            // Close popup when clicking outside
+            document.addEventListener('click', function close(e) {
+                if (!e.target.closest('.date-cell') && !e.target.closest('.popup')) {
+                    popup.classList.remove('visible');
+                    document.removeEventListener('click', close);
+                }
+            });
+        }
+
+        function prevMonth() {
+            alert("Previous month");
+        }
+
+        function nextMonth() {
+            alert("Next month");
+        }
+    </script>
+</body>
+</html>
