@@ -34,6 +34,23 @@
             box-shadow: 2px 0 10px rgba(0,0,0,0.3);
         }
 
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 20px;
+            background: #007BFF;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            background: #0069D9;
+        }
+
         .nav-btn {
             width: 100%;
             padding: 12px 20px;
@@ -294,30 +311,30 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="nav-btn">
+        <a href="home.html" class="nav-btn">
             <i class="fas fa-home"></i>
             <span>Home</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="add_bill.html" class="nav-btn">
             <i class="fas fa-plus-circle"></i>
             <span>Add Bill</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="bills.html" class="nav-btn">
             <i class="fas fa-file-invoice-dollar"></i>
             <span>Bills</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="calendar.html" class="nav-btn">
             <i class="fas fa-calendar-alt"></i>
             <span>Calendar</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="profile.html" class="nav-btn">
             <i class="fas fa-user-circle"></i>
             <span>Profile</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="settings.html" class="nav-btn">
             <i class="fas fa-cog"></i>
             <span>Settings</span>
-        </div>
+        </a>
     </div>
 
     <!-- Main Content -->
