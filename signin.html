@@ -101,6 +101,7 @@
             font-weight: 500;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
         }
 
         /* Input Fields */
@@ -171,6 +172,7 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
+            text-decoration: none; /* 👈 ADD THIS */
         }
 
         /* Divider */
@@ -281,20 +283,20 @@
 
         <div class="forgot-password">Forgot Password?</div>
 
-        <div class="signin-btn">Sign in</div>
+        <a href="home.html" class="signin-btn">Sign in</a>
 
         <div class="divider">
             <div class="divider-text">OR</div>
         </div>
 
         <div class="social-buttons">
-            <div class="social-btn">
-                <a href="">G</a>
-
-            </div>
-            <div class="social-btn">
+            <!-- Google "G" Button -->
+            <a href="continue_with_google.html" class="social-btn google-btn">G</a>
+        
+            <!-- Facebook Logo -->
+            <a href="continue_with_facebook.html" class="social-btn">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" />
-            </div>
+            </a>
         </div>
     </div>
 
