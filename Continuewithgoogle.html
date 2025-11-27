@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>OnTime - Choose an Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #E9E9E9;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 1728px;
+            height: 1117px;
+            position: relative;
+            /* Shift entire canvas slightly up to center better */
+            transform: translateY(-50px); /* 👈 This raises the whole layout */
+        }
+
+        .rectangle81 {
+            width: 1180px;
+            height: 460px;
+            left: 274px;
+            top: 329px; /* unchanged — but whole container is raised */
+            position: absolute;
+            background: white;
+            border-radius: 35px;
+        }
+
+        .terms-text {
+            position: absolute;
+            left: 888px;
+            top: 693px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: black;
+            word-wrap: break-word;
+        }
+
+        .terms-link {
+            color: #0051FF;
+        }
+
+        .continue-text {
+            position: absolute;
+            left: 344px;
+            top: 502px;
+            color: black;
+            font-size: 13px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .ontime-link {
+            color: #0051FF;
+        }
+
+        .line {
+            width: 1180px;
+            height: 1px;
+            left: 274px;
+            top: 408px;
+            position: absolute;
+            background: black;
+        }
+
+        .line01 {
+            width: 516px;
+            height: 1px;
+            left: 885px;
+            top: 544px;
+            position: absolute;
+            background: black;
+        }
+
+        .line02 {
+            width: 516px;
+            height: 1px;
+            left: 885px;
+            top: 614px;
+            position: absolute;
+            background: black;
+        }
+
+        .google-icon {
+            width: 39px;
+            height: 40px;
+            left: 301px;
+            top: 348px;
+            position: absolute;
+        }
+
+        .vector {
+            width: 39px;
+            height: 39.83px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            background: conic-gradient(
+                from 60deg at 37.73% 44.08%,
+                #4285F4 22deg, #4285F4 45deg, #4285F4 64deg,
+                #0A99BB 80deg, #34A353 92deg, #34A353 114deg,
+                #A8C500 152deg, #FBBC05 178deg, #FBBC05 208deg,
+                #FBBC05 228deg, #FF9115 260deg, #FF5C31 284deg,
+                #EA4335 301deg, #EA4335 318deg, #EA4335 358deg
+            );
+        }
+
+        .vector1 {
+            width: 4.98px;
+            height: 7.74px;
+            left: 19.92px;
+            top: 16.37px;
+            position: absolute;
+            background: #4285F4;
+        }
+
+        .sign-in-google {
+            left: 357px;
+            top: 354px;
+            position: absolute;
+            color: black;
+            font-size: 22px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .choose-account {
+            left: 340px;
+            top: 463px;
+            position: absolute;
+            color: black;
+            font-size: 26px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .test-account {
+            width: 35px;
+            height: 35px;
+            left: 895px;
+            top: 565px;
+            position: absolute;
+        }
+
+        .profile {
+            width: 195px;
+            height: 45px;
+            left: 888px;
+            top: 487px;
+            position: absolute;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            border-radius: 200px;
+        }
+
+        .name {
+            left: 64px;
+            top: 4px;
+            position: absolute;
+            color: black;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            word-wrap: break-word;
+        }
+
+        .email {
+            left: 64px;
+            top: 25px;
+            position: absolute;
+            color: black;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .use-another {
+            left: 952px;
+            top: 574px;
+            position: absolute;
+            color: black;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rectangle81"></div>
+
+        <div class="terms-text">
+            Before using this app, you can review OnTime’s 
+            <span class="terms-link">Privacy</span> 
+            <span> </span>
+            <span class="terms-link">Policy</span> 
+            <span> and </span>
+            <span class="terms-link">terms</span>
+            <span> </span>
+            <span class="terms-link">of</span>
+            <span> </span>
+            <span class="terms-link">service</span>
+        </div>
+
+        <div class="continue-text">
+            to continue to <span class="ontime-link">OnTime</span>
+        </div>
+
+        <div class="line"></div>
+        <div class="line01"></div>
+        <div class="line02"></div>
+
+        <div class="google-icon">
+            <div class="vector"></div>
+            <div class="vector1"></div>
+        </div>
+
+        <div class="sign-in-google">Sign in with Google</div>
+        <div class="choose-account">Choose an account</div>
+
+        <img class="test-account" src="https://placehold.co/35x35" alt="Google Icon" />
+
+        <div class="profile">
+            <img class="avatar" src="https://placehold.co/45x45" alt="Profile" />
+            <div class="name">Niño Oyangoren</div>
+            <div class="email">me.kitsune@gmail.com</div>
+        </div>
+
+        <div class="use-another">Use another account</div>
+    </div>
+</body>
+</html>
