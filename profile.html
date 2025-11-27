@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background: #1E1E30;
+            background: #1E1E30; /* Match dashboard */
+            font-family: 'Poppins', sans-serif;
             color: white;
             overflow: hidden;
             height: 100vh;
@@ -22,7 +23,7 @@
             display: flex;
         }
 
-        /* Sidebar - MATCHES HOME / BILLS / CALENDAR */
+        /* Sidebar - EXACTLY like dashboard */
         .sidebar {
             width: 240px;
             background: #1A1A2E;
@@ -33,19 +34,20 @@
             box-shadow: 2px 0 10px rgba(0,0,0,0.3);
         }
 
-        .nav-btn {
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             width: 100%;
             padding: 12px 20px;
             background: #007BFF;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
             transition: background 0.2s ease;
         }
 
-        .nav-btn:hover {
+        .sidebar a:hover {
             background: #0069D9;
         }
 
@@ -58,11 +60,6 @@
             font-weight: 500;
         }
 
-        /* ACTIVE STATE - Profile is active */
-        .nav-btn.active {
-            background: #007BFF;
-        }
-
         /* Main Content */
         .main-content {
             flex: 1;
@@ -72,21 +69,64 @@
             gap: 20px;
         }
 
-        .header {
-            background: #1A1A2E;
+        /* Top Bar - IDENTICAL to dashboard */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px 20px;
+            background: #1A1A2E;
             border-radius: 12px;
             margin-bottom: 20px;
+        }
+
+        .search-box {
             display: flex;
-            justify-content: center;
             align-items: center;
+            gap: 10px;
+            background: #2C2C4A;
+            border-radius: 8px;
+            padding: 8px 15px;
+            flex: 1;
         }
 
-        .header h1 {
-            font-size: 24px;
-            font-weight: 600;
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 14px;
         }
 
+        .search-btn {
+            background: #2C2C4A;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .greeting {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: #00FF88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Profile Section */
         .profile-card {
             background: #2C2C4A;
             border-radius: 12px;
@@ -164,9 +204,6 @@
         }
 
         .logout-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
             padding: 10px 20px;
             background: #2C2C4A;
             border-radius: 8px;
@@ -175,50 +212,60 @@
             border: none;
             color: white;
             font-size: 14px;
+            width: fit-content;
+            align-self: flex-start;
         }
 
         .logout-btn:hover {
             background: #3A3A5A;
         }
     </style>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="nav-btn">
+        <a href="home.html" class="nav-btn">
             <i class="fas fa-home"></i>
             <span>Home</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="add_bill.html" class="nav-btn">
             <i class="fas fa-plus-circle"></i>
             <span>Add Bill</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="bills.html" class="nav-btn">
             <i class="fas fa-file-invoice-dollar"></i>
             <span>Bills</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="calendar.html" class="nav-btn">
             <i class="fas fa-calendar-alt"></i>
             <span>Calendar</span>
-        </div>
-        <div class="nav-btn active">
+        </a>
+        <a href="profile.html" class="nav-btn">
             <i class="fas fa-user-circle"></i>
             <span>Profile</span>
-        </div>
-        <div class="nav-btn">
+        </a>
+        <a href="settings.html" class="nav-btn">
             <i class="fas fa-cog"></i>
             <span>Settings</span>
-        </div>
+        </a>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <div class="header">
-            <h1>Profile</h1>
+        <!-- Top Bar (same as dashboard) -->
+        <div class="top-bar">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-btn">Search</button>
+            </div>
+            <div class="greeting">
+                <span>Hello, Nin</span>
+                <div class="user-avatar">N</div>
+            </div>
         </div>
 
+        <!-- Profile Content -->
         <div class="profile-card">
             <div class="avatar">K</div>
             <div class="user-info">
