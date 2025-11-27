@@ -128,6 +128,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .tab.active {
@@ -135,40 +136,64 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Social Buttons */
+        /* Update .social-buttons to stack buttons vertically */
         .social-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
         }
 
-        .social-btn {
-            flex: 1;
-            height: 40px;
+        /* Pill-shaped social buttons */
+        .social-pill-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            height: 45px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            border-radius: 25px;
+            padding: 0 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .social-pill-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style the icon (G or f) */
+        .social-icon {
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .social-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .social-btn img {
-            width: 18px;
-            height: 18px;
-        }
-
-        .social-btn-text {
+            font-weight: bold;
+            font-size: 16px;
             color: white;
+            background: #fff;
+            border-radius: 50%;
+            color: #EA4335; /* Google red for G */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .social-pill-btn:nth-child(2) .social-icon {
+            color: #1877F2; /* Facebook blue for f */
+            background: #fff;
+        }
+
+        /* Style the text */
+        .social-btn-text {
             font-size: 14px;
             font-weight: 500;
+            color: white;
+            white-space: nowrap;
         }
 
         /* Input Fields */
@@ -246,7 +271,6 @@
             font-weight: 500;
         }
 
-        /* Sign Up Button */
         .signup-btn {
             width: 100%;
             height: 45px;
@@ -261,6 +285,7 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
+            text-decoration: none; /* 👈 THIS REMOVES THE UNDERLINE */
         }
 
         .signup-btn:hover {
@@ -287,14 +312,17 @@
         </div>
 
         <div class="social-buttons">
-            <div class="social-btn">
-                <a href="">G</a>
+            <!-- Google Button -->
+            <a href="continue_with_google.html" class="social-pill-btn">
+                <span class="social-icon">G</span>
                 <span class="social-btn-text">Sign up with Google</span>
-            </div>
-            <div class="social-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" />
+            </a>
+        
+            <!-- Facebook Button -->
+            <a href="continue_with_facebook.html" class="social-pill-btn">
+                <span class="social-icon">f</span>
                 <span class="social-btn-text">Sign up with Facebook</span>
-            </div>
+            </a>
         </div>
 
         <input type="text" class="input-field" placeholder="Name" />
@@ -316,7 +344,7 @@
             <div class="terms-text">I agree to all terms and Privacy Policy</div>
         </div>
 
-        <div class="signup-btn">Sign up</div>
+        <a href="signin.html" class="signup-btn">Sign up</a>
     </div>
 
     <script>
