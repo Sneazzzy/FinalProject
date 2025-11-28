@@ -275,7 +275,8 @@
             <a href="signup.html" class="create-btn">Create</a>
         </div>
         <div id="user_inputs">
-        <input id="emailornum" type="text" class="input-field" placeholder="Email or Phone" />
+            <input id="emailornum" type="text" class="input-field" placeholder="Email or Phone" />
+
         <div class="password-field">
             <input id="password" type="password" class="input-field" placeholder="Password" />
             <div class="toggle-password">👁️</div>
@@ -306,18 +307,7 @@
         <div class="wifi-icon"></div>
     </div>
 
-    <script>
-        // Toggle password visibility
-        document.querySelector('.toggle-password').addEventListener('click', function() {
-            const input = this.parentElement.querySelector('input');
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                this.textContent = '👁️';
-            }
-        });
-    </script>
+    <script src="signin.js"></script>
+
 </body>
 </html>
