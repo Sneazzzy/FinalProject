@@ -261,6 +261,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Background Gradients -->
     <div class="background-gradient gradient-1"></div>
@@ -273,18 +274,18 @@
             <div class="form-title">Sign In</div>
             <a href="signup.html" class="create-btn">Create</a>
         </div>
-
-        <input type="text" class="input-field" placeholder="Email or Phone" />
-
+        <div id="user_inputs">
+        <input id="emailornum" type="text" class="input-field" placeholder="Email or Phone" />
         <div class="password-field">
-            <input type="password" class="input-field" placeholder="Password" />
+            <input id="password" type="password" class="input-field" placeholder="Password" />
             <div class="toggle-password">👁️</div>
+        </div>
+        <button id="signin" class="signin-btn" type="submit">Sign in</button>
+
         </div>
 
         <div class="forgot-password">Forgot Password?</div>
-
-        <a href="home.html" class="signin-btn">Sign in</a>
-
+      
         <div class="divider">
             <div class="divider-text">OR</div>
         </div>
