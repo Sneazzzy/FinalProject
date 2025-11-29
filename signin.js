@@ -16,5 +16,5 @@ document.getElementById("signin").addEventListener("submit", function (event) {
   const emailOrNum = document.getElementById("emailornum").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  if (!emailOrNum || !password) {
+
 });
