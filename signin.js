@@ -16,7 +16,7 @@ document.getElementById("signin").addEventListener("submit", function (event) {
   const emailOrNum = document.getElementById("emailornum").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  fetch("/api/signin", {
+  fetch("signin.php", {
     method: "POST",
     headers: {  "Content-Type": "application/json"},
     body: JSON.stringify({ emailOrNum, password }),
