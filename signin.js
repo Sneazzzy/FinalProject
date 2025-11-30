@@ -11,27 +11,24 @@ document
     }
   });
 
-document.getElementById("signin").addEventListener("submit", function (event) {
-  event.preventDefault();
-  const emailOrNum = document.getElementById("emailornum").value.trim();
-  const password = document.getElementById("password").value.trim();
+document.getElementById("signinbtn").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const emailOrnum = document.getElementById("emailornum").value;
+  const password = document.getElementById("password").value;
+
+  const formData = new URLSearchParams();
+  formData.append("emailOrnum", emailOrnum);
+  formData.append("password", password);
 
   fetch("signin.php", {
     method: "POST",
-    headers: {  "Content-Type": "application/json"},
-    body: JSON.stringify({ emailOrNum, password }),
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData.toString()
   })
-    .then((response) => response.json()) 
-    .then((data) => {
-      if (data.success) {
-        window.location.href = "/dashboard";
-      } else {
-        alert(data.message || "Sign-in failed. Please try again.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error during sign-in:", error);
-      alert("An error occurred. Please try again later.");
-    });
-
+  .then(response => response.text())
+  .then(data => alert(data))
+  .catch(error => console.error("Error:", error));
 });
