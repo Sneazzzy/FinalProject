@@ -1,299 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create an Account</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #0C1032;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #0c1032;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+      }
 
-        /* Background Gradients */
-        .background-gradient {
-            position: absolute;
-            border-radius: 9999px;
-            filter: blur(75px);
-            z-index: -1;
-        }
+      /* Background Gradients */
+      .background-gradient {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(75px);
+        z-index: -1;
+      }
 
-        .gradient-1 {
-            width: 621.63px;
-            height: 595.56px;
-            left: 665px;
-            top: -29px;
-            background: linear-gradient(216deg, #A201FF 0%, #CAF94E 100%);
-        }
+      .gradient-1 {
+        width: 621.63px;
+        height: 595.56px;
+        left: 665px;
+        top: -29px;
+        background: linear-gradient(216deg, #a201ff 0%, #caf94e 100%);
+      }
 
-        .gradient-2 {
-            width: 474.28px;
-            height: 468.10px;
-            left: 1378.72px;
-            top: 121.02px;
-            background: linear-gradient(158deg, #C31AD9 0%, #0900FF 100%);
-        }
+      .gradient-2 {
+        width: 474.28px;
+        height: 468.1px;
+        left: 1378.72px;
+        top: 121.02px;
+        background: linear-gradient(158deg, #c31ad9 0%, #0900ff 100%);
+      }
 
-        .gradient-3 {
-            width: 661.92px;
-            height: 624.89px;
-            left: 1028.77px;
-            top: 592.11px;
-            background: linear-gradient(314deg, #FF5100 0%, #FFF95A 100%);
-        }
+      .gradient-3 {
+        width: 661.92px;
+        height: 624.89px;
+        left: 1028.77px;
+        top: 592.11px;
+        background: linear-gradient(314deg, #ff5100 0%, #fff95a 100%);
+      }
 
-        /* Astronaut Section (Left Side) */
-        .astronaut-section {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        }
+      /* Astronaut Section (Left Side) */
+      .astronaut-section {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+      }
 
-        .astronaut-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+      .astronaut-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
 
-        .wifi-icon {
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            color: #00FFA3;
-            font-size: 40px;
-            animation: pulse 2s infinite;
-        }
+      .wifi-icon {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        color: #00ffa3;
+        font-size: 40px;
+        animation: pulse 2s infinite;
+      }
 
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
+      @keyframes pulse {
+        0% {
+          opacity: 0.7;
         }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.7;
+        }
+      }
 
-        /* Main Form Container (Right Side) */
-        .form-container {
-            width: 450px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+      /* Main Form Container (Right Side) */
+      .form-container {
+        width: 450px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
 
-        /* Tab Navigation */
-        .tab-nav {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+      /* Tab Navigation */
+      .tab-nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
 
-        .tab {
-            flex: 1;
-            height: 40px;
-            background: linear-gradient(90deg, #A201FF, #CAF94E);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
+      .tab {
+        flex: 1;
+        height: 40px;
+        background: linear-gradient(90deg, #a201ff, #caf94e);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
 
-        .tab.active {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+      .tab.active {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
 
-        /* Update .social-buttons to stack buttons vertically */
-        .social-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
+      /* Update .social-buttons to stack buttons vertically */
+      .social-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+      }
 
-        /* Pill-shaped social buttons */
-        .social-pill-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            padding: 0 20px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
+      /* Pill-shaped social buttons */
+      .social-pill-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 0 20px;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
 
-        .social-pill-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
+      .social-pill-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
 
-        /* Style the icon (G or f) */
-        .social-icon {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
-            color: white;
-            background: #fff;
-            border-radius: 50%;
-            color: #EA4335; /* Google red for G */
-            font-family: 'Poppins', sans-serif;
-        }
+      /* Style the icon (G or f) */
+      .social-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 16px;
+        color: white;
+        background: #fff;
+        border-radius: 50%;
+        color: #ea4335; /* Google red for G */
+        font-family: "Poppins", sans-serif;
+      }
 
-        .social-pill-btn:nth-child(2) .social-icon {
-            color: #1877F2; /* Facebook blue for f */
-            background: #fff;
-        }
+      .social-pill-btn:nth-child(2) .social-icon {
+        color: #1877f2; /* Facebook blue for f */
+        background: #fff;
+      }
 
-        /* Style the text */
-        .social-btn-text {
-            font-size: 14px;
-            font-weight: 500;
-            color: white;
-            white-space: nowrap;
-        }
+      /* Style the text */
+      .social-btn-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+        white-space: nowrap;
+      }
 
-        /* Input Fields */
-        .input-field {
-            width: 100%;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 0 15px;
-            color: white;
-            font-family: Poppins;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
+      /* Input Fields */
+      .input-field {
+        width: 100%;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 0 15px;
+        color: white;
+        font-family: Poppins;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
 
-        .input-field:focus {
-            outline: none;
-            border-color: #A201FF;
-            box-shadow: 0 0 10px rgba(162, 1, 255, 0.5);
-        }
+      .input-field:focus {
+        outline: none;
+        border-color: #a201ff;
+        box-shadow: 0 0 10px rgba(162, 1, 255, 0.5);
+      }
 
-        /* Password Field with Toggle */
-        .password-field {
-            position: relative;
-        }
+      /* Password Field with Toggle */
+      .password-field {
+        position: relative;
+      }
 
-        .toggle-password {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #0C1032;
-            font-size: 12px;
-            font-weight: bold;
-        }
+      .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #0c1032;
+        font-size: 12px;
+        font-weight: bold;
+      }
 
-        /* Terms Checkbox */
-        .terms-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-        }
+      /* Terms Checkbox */
+      .terms-section {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+      }
 
-        .checkbox {
-            width: 16px;
-            height: 16px;
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+      .checkbox {
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-        .checkbox-checked::after {
-            content: "✓";
-            color: #0C1032;
-            font-size: 10px;
-            font-weight: bold;
-        }
+      .checkbox-checked::after {
+        content: "✓";
+        color: #0c1032;
+        font-size: 10px;
+        font-weight: bold;
+      }
 
-        .terms-text {
-            color: white;
-            font-size: 12px;
-            font-weight: 500;
-        }
+      .terms-text {
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+      }
 
-        .signup-btn {
-            width: 100%;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            margin-top: 20px;
-            text-decoration: none; /* 👈 THIS REMOVES THE UNDERLINE */
-        }
+      .signup-btn {
+        width: 100%;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        text-decoration: none; /* 👈 THIS REMOVES THE UNDERLINE */
+      }
 
-        .signup-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
+      .signup-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Background Gradients -->
     <div class="background-gradient gradient-1"></div>
     <div class="background-gradient gradient-2"></div>
@@ -301,84 +310,63 @@
 
     <!-- Astronaut Section (Left) -->
     <div class="astronaut-section">
-        <div class="wifi-icon"></div>
+      <div class="wifi-icon"></div>
     </div>
 
     <!-- Main Form (Right) -->
     <div class="form-container">
-        <div class="tab-nav">
-            <a href="signin.html" class="tab">Sign in</a>
-            <div class="tab active" onclick="switchTab('signup')">Create an account</div>
+      <div class="tab-nav">
+        <a href="signin.html" class="tab">Sign in</a>
+        <div class="tab active" onclick="switchTab('signup')">
+          Create an account
         </div>
+      </div>
 
-        <div class="social-buttons">
-            <!-- Google Button -->
-            <a href="Continuewithgoogle.html" class="social-pill-btn">
-                <span class="social-icon">G</span>
-                <span class="social-btn-text">Sign up with Google</span>
-            </a>
-        
-            <!-- Facebook Button -->
-            <a href="Continuewithfacebook.html" class="social-pill-btn">
-                <span class="social-icon">f</span>
-                <span class="social-btn-text">Sign up with Facebook</span>
-            </a>
-        </div>
+      <div class="social-buttons">
+        <!-- Google Button -->
+        <a href="Continuewithgoogle.html" class="social-pill-btn">
+          <span class="social-icon">G</span>
+          <span class="social-btn-text">Sign up with Google</span>
+        </a>
 
-        <input type="text" class="input-field" placeholder="Name" />
+        <!-- Facebook Button -->
+        <a href="Continuewithfacebook.html" class="social-pill-btn">
+          <span class="social-icon">f</span>
+          <span class="social-btn-text">Sign up with Facebook</span>
+        </a>
+      </div>
 
-        <input type="email" class="input-field" placeholder="Email or Phone" />
+      <form method="post" action="signup.php">
+        <input type="text" id="name" class="input-field" placeholder="Name" />
+
+        <input type="email" id="mail" class="input-field" placeholder="Email or Phone" />
 
         <div class="password-field">
-            <input type="password" class="input-field" placeholder="Password" />
-            <div class="toggle-password">👁️</div>
+          <input type="password" id="password" class="input-field" placeholder="Password" />
+          <div class="toggle-password">👁️</div>
         </div>
 
         <div class="password-field">
-            <input type="password" class="input-field" placeholder="Confirm Password" />
-            <div class="toggle-password">👁️</div>
+          <input
+            type="password"
+            id="confirm_pass"
+            class="input-field"
+            placeholder="Confirm Password"
+          />
+          <div class="toggle-password">👁️</div>
         </div>
 
         <div class="terms-section">
-            <div class="checkbox" id="termsCheckbox"></div>
-            <div class="terms-text">I agree to all terms and Privacy Policy</div>
+          <div class="checkbox" id="termsCheckbox"></div>
+          <div class="terms-text">I agree to all terms and Privacy Policy</div>
         </div>
 
-        <a href="signin.html" class="signup-btn">Sign up</a>
+        <button id="signup" type="submit" class="signup-btn">Sign up</button>
+      </form>
     </div>
 
-    <script>
-        // Toggle password visibility
-        document.querySelectorAll('.toggle-password').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const input = this.parentElement.querySelector('input');
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    this.textContent = '🙈';
-                } else {
-                    input.type = 'password';
-                    this.textContent = '👁️';
-                }
-            });
-        });
-
-        // Toggle checkbox
-        document.getElementById('termsCheckbox').addEventListener('click', function() {
-            this.classList.toggle('checkbox-checked');
-        });
-
-        // Tab switching (optional)
-        function switchTab(tab) {
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            if (tab === 'signin') {
-                tabs[0].classList.add('active');
-                // You can redirect or show sign-in form here
-                alert("Switching to Sign In...");
-            } else {
-                tabs[1].classList.add('active');
-            }
-        }
-    </script>
-</body>
+    
+    
+    <script src="signup.js"></script>
+  </body>
 </html>
