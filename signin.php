@@ -1,10 +1,12 @@
 <?php
-session_start(); 
+session_start();
 $host = 'localhost';
 $user = 'root';
 $password = '';
 $dbname = 'final_project';
-
+$home_url = 'home.html';
+$signin = new Signin($host, $user, $password, $dbname);
+$signin->handleRequest($home_url);
 class Signin
 {
 
@@ -20,7 +22,7 @@ class Signin
         }
     }
 
-    public function handleRequest()
+    public function handleRequest($home_url)
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST['emailOrnum']) && isset($_POST['password'])) {
@@ -38,8 +40,8 @@ class Signin
 
                 // Prepared statement to prevent SQL injection
                 $stmt = $this->conn->prepare("
-                    SELECT email, phone_num, password_hash 
-                    FROM users 
+                    SELECT email, phone_num, password_hash
+                    FROM users
                     WHERE (email = ? OR phone_num = ?)
                 ");
                 $stmt->bind_param("ss", $mail, $mail);
@@ -51,24 +53,17 @@ class Signin
 
                     // Compare hashed password
                     if ($hashed === $user['password_hash']) {
-                        // Store session variables
-                        $_SESSION['user_email'] = $user['email'];
-                        $_SESSION['user_phone'] = $user['phone_num'];
-
-                        // Redirect to home.html
-
-                        if (!isset($_SESSION['user'])) {
-                            header("Location: login.php");
-                            exit();
-                        }
-
+                        // Set session after successful login
+                        $_SESSION['user'] = $user['email']; // or use phone_num if preferred
+                        header("Location: $home_url");
+                        exit();
                     } else {
                         echo "❌ Invalid password.";
                     }
                 } else {
                     echo "❌ No account found with that email or phone number.";
                 }
-
+ 
                 $stmt->close();
             } else {
                 echo "⚠️ Missing input values.";
@@ -77,6 +72,5 @@ class Signin
     }
 }
 
-$signin = new Signin($host, $user, $password, $dbname);
-$signin->handleRequest();
+
 ?>
